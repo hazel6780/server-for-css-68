@@ -1,0 +1,234 @@
+﻿// 版权归百小僧及百签科技（广东）有限公司所有。
+// 
+// 此源代码遵循位于源代码树根目录中的 LICENSE 文件的许可证。
+
+namespace Cordon;
+
+/// <summary>
+///     数据验证模块扩展类
+/// </summary>
+public static class ValidationExtensions
+{
+    /// <summary>
+    ///     判断对象验证结果列表是否包含错误项（空列表或<c>null</c>）
+    /// </summary>
+    /// <param name="validationResults"><see cref="ValidationResult" /> 列表</param>
+    /// <returns>
+    ///     <see cref="bool" />
+    /// </returns>
+    public static bool HasErrors([NotNullWhen(true)] this List<ValidationResult>? validationResults) =>
+        validationResults is { Count: > 0 };
+
+    /// <summary>
+    ///     将对象验证结果列表中的错误消息提取并扁平化为字符串数组
+    /// </summary>
+    /// <param name="validationResults"><see cref="ValidationResult" /> 列表</param>
+    /// <returns><see cref="string" />[]</returns>
+    public static string?[] FlattenErrors(this List<ValidationResult>? validationResults) =>
+        validationResults?.Select(u => u.ErrorMessage).ToArray() ?? [];
+
+    /// <summary>
+    ///     若 <see cref="ValidationResult" /> 列表为空则返回 <c>null</c>，否则返回列表本身
+    /// </summary>
+    /// <param name="validationResults"><see cref="ValidationResult" /> 列表</param>
+    /// <returns>
+    ///     <see cref="List{T}" />
+    /// </returns>
+    public static List<ValidationResult>? ToResults(this List<ValidationResult>? validationResults) =>
+        validationResults is { Count: > 0 } ? validationResults : null;
+
+    /// <summary>
+    ///     若 <see cref="ValidationResult" /> 列表为空则返回 <c>null</c>，否则返回列表本身
+    /// </summary>
+    /// <param name="validationResults"><see cref="ValidationResult" /> 列表</param>
+    /// <returns>
+    ///     <see cref="List{T}" />
+    /// </returns>
+    public static List<ValidationResult>? ToResults(this IEnumerable<ValidationResult>? validationResults) =>
+        validationResults?.ToList().ToResults();
+
+    /// <summary>
+    ///     设置规则集
+    /// </summary>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <param name="ruleSets">规则集。未设置规则集时，默认值为 <c>null</c>（匹配默认规则集请使用 <c>null</c>，空字符串无效）</param>
+    /// <returns>
+    ///     <see cref="ValidationContext" />
+    /// </returns>
+    public static ValidationContext WithRuleSets(this ValidationContext validationContext, string?[]? ruleSets = null)
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+
+        validationContext.Items[Constants.ValidationOptionsKey] = new ValidationOptionsMetadata(ruleSets);
+
+        return validationContext;
+    }
+
+    /// <summary>
+    ///     创建对象验证器用于在 <see cref="IValidatableObject.Validate" /> 方法中内联配置验证规则
+    /// </summary>
+    /// <remarks>配置完成后，请调用无参的 <see cref="ObjectValidator{T}.ToResults(bool)" /> 方法获取验证结果。</remarks>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <typeparam name="T">对象类型</typeparam>
+    /// <returns>
+    ///     <see cref="ObjectValidator{T}" />
+    /// </returns>
+    public static ObjectValidator<T> With<T>(this ValidationContext validationContext)
+        where T : class
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+
+        // 拷贝一份共享数据并追加自身实例
+        var items = new Dictionary<object, object?>(validationContext.Items)
+        {
+            [Constants.ValidationContextKey] = validationContext
+        };
+
+        // 初始化 ObjectValidator<T> 实例并跳过属性验证特性验证，避免死循环
+        var objectValidator = new ObjectValidator<T>(items).UseAttributeValidation(false);
+
+        // 同步 IServiceProvider 委托
+        objectValidator.InitializeServiceProvider(validationContext.GetService);
+
+        return objectValidator;
+    }
+
+    /// <summary>
+    ///     创建对象验证器验证当前实例并返回验证结果列表
+    /// </summary>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <param name="configure">自定义配置委托</param>
+    /// <typeparam name="T">对象类型</typeparam>
+    /// <returns>
+    ///     <see cref="IEnumerable{T}" />
+    /// </returns>
+    public static IEnumerable<ValidationResult> ValidateWith<T>(this ValidationContext validationContext,
+        Action<ObjectValidator<T>> configure)
+        where T : class
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+        ArgumentNullException.ThrowIfNull(configure);
+
+        // 初始化 ObjectValidator<T> 实例
+        var objectValidator = new ObjectValidator<T>(new Dictionary<object, object?>(validationContext.Items));
+
+        // 调用自定义配置委托
+        configure.Invoke(objectValidator);
+
+        return validationContext.ValidateWith(objectValidator);
+    }
+
+    /// <summary>
+    ///     使用指定对象验证器验证当前实例并返回验证结果列表
+    /// </summary>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <param name="objectValidator">
+    ///     <see cref="AbstractValidator{T}" />
+    /// </param>
+    /// <param name="disposeAfterValidation">
+    ///     是否在验证完成后自动释放 <paramref name="objectValidator" />。默认值为：<c>true</c>
+    /// </param>
+    /// <typeparam name="T">对象类型</typeparam>
+    /// <returns>
+    ///     <see cref="IEnumerable{T}" />
+    /// </returns>
+    public static IEnumerable<ValidationResult> ValidateWith<T>(this ValidationContext validationContext,
+        ObjectValidator<T> objectValidator, bool disposeAfterValidation = true) where T : class
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+        ArgumentNullException.ThrowIfNull(objectValidator);
+
+        // 跳过属性验证特性验证并返回对象验证结果列表
+        return objectValidator.UseAttributeValidation(false).ToResults(validationContext, disposeAfterValidation);
+    }
+
+    /// <summary>
+    ///     使用指定单值验证器验证当前实例并返回验证结果列表
+    /// </summary>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <param name="valueValidator">
+    ///     <see cref="AbstractValueValidator{T}" />
+    /// </param>
+    /// <param name="disposeAfterValidation">
+    ///     是否在验证完成后自动释放 <paramref name="valueValidator" />。默认值为：<c>true</c>
+    /// </param>
+    /// <typeparam name="T">对象类型</typeparam>
+    /// <returns>
+    ///     <see cref="IEnumerable{T}" />
+    /// </returns>
+    public static IEnumerable<ValidationResult> ValidateWith<T>(this ValidationContext validationContext,
+        ValueValidator<T> valueValidator, bool disposeAfterValidation = true)
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+        ArgumentNullException.ThrowIfNull(valueValidator);
+
+        // 返回对象验证结果列表
+        return valueValidator.ToResults(validationContext, disposeAfterValidation);
+    }
+
+    /// <summary>
+    ///     使用指定对象验证器验证当前实例并返回验证结果列表
+    /// </summary>
+    /// <param name="validationContext">
+    ///     <see cref="ValidationContext" />
+    /// </param>
+    /// <typeparam name="TValidator">
+    ///     <see cref="ObjectValidator{T}" />
+    /// </typeparam>
+    /// <returns>
+    ///     <see cref="IEnumerable{T}" />
+    /// </returns>
+    public static IEnumerable<ValidationResult> ValidateWith<TValidator>(this ValidationContext validationContext)
+        where TValidator : IObjectValidator
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(validationContext);
+
+        // 创建 TValidator 实例
+        var validator = validationContext.GetService<IServiceProvider>() is null
+            ? Activator.CreateInstance<TValidator>()
+            : ActivatorUtilities.CreateInstance<TValidator>(validationContext);
+
+        // 检查验证器是否实现 IValidationAttributeConfigurable 接口
+        if (validator is IValidationAttributeConfigurable configurable)
+        {
+            configurable.UseAttributeValidation(false);
+        }
+
+        return validator.ToResults(validationContext);
+    }
+
+    /// <summary>
+    ///     将强类型的属性选择表达式（如 <c>x => x.Age</c>）转换为返回 <see cref="object" /> 的通用表达式
+    /// </summary>
+    /// <param name="selector">属性选择器</param>
+    /// <typeparam name="T">对象类型</typeparam>
+    /// <typeparam name="TProperty">属性类型</typeparam>
+    /// <returns>
+    ///     <see cref="Expression{TDelegate}" />
+    /// </returns>
+    internal static Expression<Func<T, object?>> AsObjectSelector<T, TProperty>(
+        this Expression<Func<T, TProperty>> selector)
+    {
+        // 空检查
+        ArgumentNullException.ThrowIfNull(selector);
+
+        return Expression.Lambda<Func<T, object?>>(Expression.Convert(selector.Body, typeof(object)),
+            selector.Parameters);
+    }
+}
