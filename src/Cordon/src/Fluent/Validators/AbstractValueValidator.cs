@@ -9,3 +9,4 @@ namespace Cordon;
 /// </summary>
 /// <typeparam name="T">对象类型</typeparam>
 public abstract class AbstractValueValidator<T> : ValueValidator<T>;
+// fb99d5

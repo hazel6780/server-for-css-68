@@ -56,3 +56,4 @@ public class EndsWithValidator : ValidatorBase
     public override string FormatErrorMessage(string name) =>
         string.Format(CultureInfo.CurrentCulture, ErrorMessageString, name, SearchValue);
 }
+// 75e887

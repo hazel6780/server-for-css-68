@@ -20,3 +20,4 @@ public class ValidationOptionsMetadataTests
         Assert.Equal(["email"], (string[]?)metadata3.RuleSets!);
     }
 }
+// 768487

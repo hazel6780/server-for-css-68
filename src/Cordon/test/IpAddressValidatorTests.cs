@@ -172,3 +172,4 @@ public class IpAddressValidatorTests
     public void CheckIpAddress_WithAllowIPv6_ReturnOK(string? value, bool result) =>
         Assert.Equal(result, IpAddressValidator.CheckIpAddress(value!, true));
 }
+// 51ef2c

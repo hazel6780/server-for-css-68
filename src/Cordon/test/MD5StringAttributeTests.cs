@@ -128,3 +128,4 @@ public class MD5StringAttributeTests
         [MD5String(AllowShortFormat = true)] public string? Data2 { get; set; }
     }
 }
+// 4539b2

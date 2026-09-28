@@ -78,3 +78,4 @@ public class DomainAttributeTests
         [Domain] public string? Data { get; set; }
     }
 }
+// 27e4a6

@@ -78,3 +78,4 @@ public class SingleAttributeTests
         [Single] public List<string>? Data { get; set; }
     }
 }
+// 0fd552

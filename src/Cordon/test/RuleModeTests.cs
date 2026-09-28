@@ -16,3 +16,4 @@ public class RuleModeTests
         Assert.True(strings.SequenceEqual(names));
     }
 }
+// e43817

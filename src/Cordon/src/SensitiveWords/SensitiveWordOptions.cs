@@ -45,3 +45,4 @@ public sealed record SensitiveWordOptions
     /// </remarks>
     public bool IgnoreUnicodeVariants { get; set; } = true;
 }
+// 37444d

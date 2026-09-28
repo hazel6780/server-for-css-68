@@ -117,3 +117,4 @@ public class LessThanAttributeTests
         [LessThan(10.1)] public double Data2 { get; set; }
     }
 }
+// 22cb9d

@@ -28,3 +28,4 @@ public class ValidatorExceptionTests
         Assert.Equal("错误信息", exception.Message);
     }
 }
+// 2eb53f

@@ -702,3 +702,4 @@ public sealed class SensitiveWordSanitizer
         internal HashSet<string> MatchedWordSet { get; set; } = new(2, StringComparer.OrdinalIgnoreCase);
     }
 }
+// 8a4be4

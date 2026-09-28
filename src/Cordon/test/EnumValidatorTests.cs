@@ -213,3 +213,4 @@ public class EnumValidatorTests
         Assert.Equal(result, validator.IsEnumValueDefined(value!));
     }
 }
+// e961d6

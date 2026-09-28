@@ -28,3 +28,4 @@ public interface IPropertyValidatorCloneable<T>
     /// </returns>
     IPropertyValidator<T> Clone(ObjectValidator<T> objectValidator);
 }
+// b55072

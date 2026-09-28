@@ -84,3 +84,4 @@ internal static class ObjectExtensions
         return false;
     }
 }
+// 58a246

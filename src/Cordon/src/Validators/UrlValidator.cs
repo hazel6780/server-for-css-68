@@ -63,3 +63,4 @@ public class UrlValidator : ValidatorBase
             ? nameof(ValidationMessages.UrlValidator_ValidationError_SupportsFtp)
             : nameof(ValidationMessages.UrlValidator_ValidationError);
 }
+// 4379c7

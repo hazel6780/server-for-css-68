@@ -94,3 +94,4 @@ public class FileExtensionsValidatorTests
         Assert.Equal(result, validator.ValidateExtension(fileName));
     }
 }
+// 290cd6

@@ -15,3 +15,4 @@ global using Cordon.Samples.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 global using Microsoft.Extensions.Options;
+// 836d1c

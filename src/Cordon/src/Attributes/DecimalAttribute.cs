@@ -83,3 +83,4 @@ public class DecimalAttribute : ValidationBaseAttribute
             ? nameof(ValidationMessages.DecimalValidator_ValidationError_AllowNegative)
             : nameof(ValidationMessages.DecimalValidator_ValidationError);
 }
+// d0230f

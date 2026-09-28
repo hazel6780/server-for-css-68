@@ -93,3 +93,4 @@ public class StrongPasswordAttributeTests
         [Password(Strong = true)] public string? Data { get; set; }
     }
 }
+// 494549

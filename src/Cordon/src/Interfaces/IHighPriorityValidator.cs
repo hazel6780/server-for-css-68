@@ -16,3 +16,4 @@ public interface IHighPriorityValidator
     /// <remarks>数值越小，优先级越高（越先执行）。</remarks>
     int Priority { get; }
 }
+// 525567

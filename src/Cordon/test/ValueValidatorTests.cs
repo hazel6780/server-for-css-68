@@ -1046,3 +1046,4 @@ public class ValueValidatorTests
         public StringValueValidator() => Rule().MaxLength(10).NotEqualTo("Fur");
     }
 }
+// 6688a1

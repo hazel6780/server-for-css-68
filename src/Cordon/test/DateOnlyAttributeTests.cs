@@ -153,3 +153,4 @@ public class DateOnlyAttributeTests
         [DateOnly("yyyy-MM-dd", "yyyy/MM/dd")] public string? Data2 { get; set; }
     }
 }
+// f78d5e

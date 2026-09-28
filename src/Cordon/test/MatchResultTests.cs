@@ -22,3 +22,4 @@ public class MatchResultTests
         Assert.Equal("[敏感词] @ 1..5", result.ToString());
     }
 }
+// 52b47a

@@ -5,3 +5,4 @@
 // 配置测试友元程序集
 
 [assembly: InternalsVisibleTo("Cordon.AspNetCore.Tests")]
+// cf9d42

@@ -69,3 +69,4 @@ public partial class UnifiedSocialCreditCodeValidator : ValidatorBase
     [GeneratedRegex(@"^(([0-9A-Za-z]{15})|([0-9A-Za-z]{18})|([0-9A-Za-z]{20}))$")]
     private static partial Regex LooseRegex();
 }
+// e5bbf3

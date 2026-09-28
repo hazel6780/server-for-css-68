@@ -15,3 +15,4 @@ public interface IValidationAttributeConfigurable
     /// <param name="enabled">是否启用</param>
     void UseAttributeValidation(bool enabled);
 }
+// 45acc3

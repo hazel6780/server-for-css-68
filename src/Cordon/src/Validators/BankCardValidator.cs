@@ -69,3 +69,4 @@ public partial class BankCardValidator : ValidatorBase
     [GeneratedRegex(@"^[1-9]\d{11,18}$")]
     private static partial Regex Regex();
 }
+// aa3dde

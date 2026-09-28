@@ -13,3 +13,4 @@ public class StringLocalizerValidationExtensionsTests
         Assert.Equal("Name 错误信息", StringLocalizerValidationExtensions.GetString(null, "{0} 错误信息", "Name"));
     }
 }
+// 40fb8a

@@ -23,3 +23,4 @@ public class ValidatorResultExtensionsTests
         Assert.Equal("出错了", exception.Message);
     }
 }
+// 4375e0

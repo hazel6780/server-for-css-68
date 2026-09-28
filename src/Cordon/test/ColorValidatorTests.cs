@@ -104,3 +104,4 @@ public class ColorValidatorTests
         Assert.Equal("数据无效", exception2.Message);
     }
 }
+// 53dc9e

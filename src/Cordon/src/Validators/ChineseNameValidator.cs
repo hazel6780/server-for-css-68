@@ -33,3 +33,4 @@ public partial class ChineseNameValidator : ValidatorBase
     [GeneratedRegex(@"^(?:[\u4e00-\u9fa5·]{2,16})$")]
     private static partial Regex Regex();
 }
+// 81dd67

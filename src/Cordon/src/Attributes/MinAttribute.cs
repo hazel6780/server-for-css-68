@@ -55,3 +55,4 @@ public class MinAttribute : ValidationBaseAttribute
     public override string FormatErrorMessage(string name) =>
         string.Format(CultureInfo.CurrentCulture, ErrorMessageString, name, CompareValue);
 }
+// e4aff8

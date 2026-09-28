@@ -19,3 +19,4 @@ public enum CascadeMode
     /// </summary>
     FailFast
 }
+// 2790da

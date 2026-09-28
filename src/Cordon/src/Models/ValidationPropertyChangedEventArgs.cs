@@ -22,3 +22,4 @@ public sealed class ValidationPropertyChangedEventArgs : PropertyChangedEventArg
     /// </summary>
     public object? PropertyValue { get; }
 }
+// 4868fa

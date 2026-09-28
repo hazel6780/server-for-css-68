@@ -88,3 +88,4 @@ public class ColorAttributeTests
         [Color(FullMode = true)] public string? Data2 { get; set; }
     }
 }
+// 18792e

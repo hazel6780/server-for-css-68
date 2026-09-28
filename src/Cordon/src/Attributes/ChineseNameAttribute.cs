@@ -26,3 +26,4 @@ public class ChineseNameAttribute : ValidationBaseAttribute
     /// <inheritdoc />
     public override bool IsValid(object? value) => _validator.IsValid(value);
 }
+// 1b3b42

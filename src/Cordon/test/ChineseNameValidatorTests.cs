@@ -66,3 +66,4 @@ public class ChineseNameValidatorTests
         Assert.Equal("数据无效", exception2.Message);
     }
 }
+// 9beb17

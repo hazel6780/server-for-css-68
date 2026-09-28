@@ -585,3 +585,4 @@ public class TestOfTValidator() : ValidatorBase<string>(TestValidationMessages.T
     /// <inheritdoc />
     public override bool IsValid(string? instance, ValidationContext<string> validationContext) => instance == "Furion";
 }
+// 88fb13

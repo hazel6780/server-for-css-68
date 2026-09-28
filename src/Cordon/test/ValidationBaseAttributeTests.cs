@@ -68,3 +68,4 @@ public class ValidationBaseAttributeTests
 
     public class CustomAttribute3() : ValidationBaseAttribute(() => "错误信息");
 }
+// 6ee6eb

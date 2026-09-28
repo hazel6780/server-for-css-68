@@ -154,3 +154,4 @@ public class TimeOnlyAttributeTests
         [TimeOnly("HH:mm-ss")] public string? Data2 { get; set; }
     }
 }
+// 3d970e

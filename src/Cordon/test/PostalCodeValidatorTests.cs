@@ -61,3 +61,4 @@ public class PostalCodeValidatorTests
         Assert.Equal("数据无效", exception2.Message);
     }
 }
+// d6cdea

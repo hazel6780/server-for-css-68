@@ -60,3 +60,4 @@ public class StringContainsAttribute : ValidationBaseAttribute
     public override string FormatErrorMessage(string name) =>
         string.Format(CultureInfo.CurrentCulture, ErrorMessageString, name, SearchValue);
 }
+// d59d61

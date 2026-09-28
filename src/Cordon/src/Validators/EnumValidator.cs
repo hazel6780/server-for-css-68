@@ -124,3 +124,4 @@ public class EnumValidator : ValidatorBase
             ? nameof(ValidationMessages.EnumValidator_ValidationError_SupportFlags)
             : nameof(ValidationMessages.EnumValidator_ValidationError);
 }
+// aa56a6

@@ -26,3 +26,4 @@ public class NullAttribute : ValidationBaseAttribute
     /// <inheritdoc />
     public override bool IsValid(object? value) => _validator.IsValid(value);
 }
+// 7fc5e2

@@ -15,3 +15,4 @@ public class StrongPasswordValidator : PasswordValidator
     /// </summary>
     public StrongPasswordValidator() => Strong = true;
 }
+// 68156c

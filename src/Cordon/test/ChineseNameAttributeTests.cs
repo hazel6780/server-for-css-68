@@ -78,3 +78,4 @@ public class ChineseNameAttributeTests
         [ChineseName] public string? Data { get; set; }
     }
 }
+// 290f94

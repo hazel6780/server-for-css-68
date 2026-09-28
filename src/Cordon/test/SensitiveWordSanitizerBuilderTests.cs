@@ -312,3 +312,4 @@ public class SensitiveWordSanitizerBuilderTests
         Assert.Equal(normalizedPath, SensitiveWordSanitizerBuilder.ResolveFilePath(normalizedPath));
     }
 }
+// 2bc3d4

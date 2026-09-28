@@ -24,3 +24,4 @@ public enum RuleMode
     /// </summary>
     Any
 }
+// 7d6c6f

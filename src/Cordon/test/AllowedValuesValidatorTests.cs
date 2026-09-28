@@ -68,3 +68,4 @@ public class AllowedValuesValidatorTests
         Assert.Equal("数据无效", exception2.Message);
     }
 }
+// b82120

@@ -51,3 +51,4 @@ public class UnifiedSocialCreditCodeAttribute : ValidationBaseAttribute
             ? nameof(ValidationMessages.UnifiedSocialCreditCodeValidator_ValidationError_AllowLooseMatch)
             : nameof(ValidationMessages.UnifiedSocialCreditCodeValidator_ValidationError);
 }
+// 36aea6

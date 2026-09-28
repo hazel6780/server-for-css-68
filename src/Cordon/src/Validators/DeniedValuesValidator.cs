@@ -32,3 +32,4 @@ public class DeniedValuesValidator : ValidatorBase
     public override bool IsValid(object? value, IValidationContext? validationContext) =>
         Values.All(denied => !denied?.Equals(value) ?? value is not null);
 }
+// 7cb8ce

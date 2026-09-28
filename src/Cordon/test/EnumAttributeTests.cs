@@ -212,3 +212,4 @@ public class EnumAttributeTests
         [Enum] public MyEnum? Data2 { get; set; }
     }
 }
+// 943d0a

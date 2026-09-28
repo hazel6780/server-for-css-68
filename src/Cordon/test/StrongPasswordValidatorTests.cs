@@ -87,3 +87,4 @@ public class StrongPasswordValidatorTests
         Assert.Equal("PasswordValidator_ValidationError_Strong", validator.GetResourceKey());
     }
 }
+// 38eb4e

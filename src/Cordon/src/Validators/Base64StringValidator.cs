@@ -27,3 +27,4 @@ public class Base64StringValidator : ValidatorBase
         return value is string valueAsString && Base64.IsValid(valueAsString);
     }
 }
+// d82e46

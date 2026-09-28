@@ -36,3 +36,4 @@ public class RequiredValidator : ValidatorBase, IHighPriorityValidator
         return AllowEmptyStrings || value is not string stringValue || !string.IsNullOrWhiteSpace(stringValue);
     }
 }
+// 9e6ad0

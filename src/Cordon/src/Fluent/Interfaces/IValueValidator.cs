@@ -15,3 +15,4 @@ public interface IValueValidator;
 /// <typeparam name="T">对象类型</typeparam>
 public interface IValueValidator<T> : IValueValidator, IObjectValidator<T>, IMemberPathRepairable,
     IRuleSetContextProvider;
+// 994b18

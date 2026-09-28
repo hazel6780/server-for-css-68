@@ -106,3 +106,4 @@ public interface IObjectValidator<T> : IObjectValidator
     /// </returns>
     ValidatorResult<T> TryValidate(T? instance, string?[]? ruleSets = null);
 }
+// 1381fb

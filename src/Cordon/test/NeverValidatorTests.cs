@@ -55,3 +55,4 @@ public class NeverValidatorTests
         Assert.Equal("数据无效", exception2.Message);
     }
 }
+// f40a65

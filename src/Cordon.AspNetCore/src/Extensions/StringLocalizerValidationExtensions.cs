@@ -36,3 +36,4 @@ public static class StringLocalizerValidationExtensions
     public static LocalizedString GetString(this IStringLocalizer? localizer, string name, params object[] arguments) =>
         localizer is null ? new LocalizedString(name, string.Format(name, arguments)) : localizer[name, arguments];
 }
+// a82a91

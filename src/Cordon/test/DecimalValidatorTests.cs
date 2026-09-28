@@ -360,3 +360,4 @@ public class DecimalValidatorTests
     public void GetActualScale_ReturnOK(decimal value, int places) =>
         Assert.Equal(places, DecimalValidator.GetActualScale(value));
 }
+// 9ae164

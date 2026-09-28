@@ -242,3 +242,4 @@ public class ValidationExtensionsTests
         public TestStringValidator() => Rule().Required().MinLength(3);
     }
 }
+// b1a3a2

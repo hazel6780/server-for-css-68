@@ -41,3 +41,4 @@ public class JsonAttribute : ValidationBaseAttribute
     /// <inheritdoc />
     public override bool IsValid(object? value) => _validator.IsValid(value);
 }
+// c8e178

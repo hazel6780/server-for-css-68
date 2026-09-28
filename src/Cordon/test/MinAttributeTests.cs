@@ -118,3 +118,4 @@ public class MinAttributeTests
         [Min(10.1)] public double Data2 { get; set; }
     }
 }
+// 7a41d5

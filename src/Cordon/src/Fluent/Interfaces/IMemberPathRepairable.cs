@@ -20,3 +20,4 @@ public interface IMemberPathRepairable
     /// <param name="memberPath">对象图中的属性路径</param>
     void RepairMemberPaths(string? memberPath);
 }
+// b43293

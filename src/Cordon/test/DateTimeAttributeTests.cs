@@ -155,3 +155,4 @@ public class DateTimeAttributeTests
         [DateTime("yyyy/MM/dd HH:mm:ss")] public string? Data2 { get; set; }
     }
 }
+// 695b80

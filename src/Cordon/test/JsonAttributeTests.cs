@@ -128,3 +128,4 @@ public class JsonAttributeTests
         [Json(AllowTrailingCommas = true)] public string? Data2 { get; set; }
     }
 }
+// 8a6fdd

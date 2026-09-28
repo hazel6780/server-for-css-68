@@ -66,3 +66,4 @@ public class ObjectValidatorEnumerableExtensionsTests
         public VModelValidator2() => RuleFor(u => u.Name).Required().MinLength(3);
     }
 }
+// f02733

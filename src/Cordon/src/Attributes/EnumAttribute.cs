@@ -144,3 +144,4 @@ public class EnumAttribute : ValidationBaseAttribute
         return memberType is null ? memberType : Nullable.GetUnderlyingType(memberType) ?? memberType;
     }
 }
+// f84331

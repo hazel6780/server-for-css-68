@@ -141,3 +141,4 @@ public class UrlStrictAttributeTests
         [UrlStrict(SupportsFtp = true)] public string? Data2 { get; set; }
     }
 }
+// f717aa

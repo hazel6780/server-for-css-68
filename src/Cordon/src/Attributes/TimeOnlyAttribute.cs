@@ -89,3 +89,4 @@ public class TimeOnlyAttribute : ValidationBaseAttribute
             ? nameof(ValidationMessages.TimeOnlyValidator_ValidationError)
             : nameof(ValidationMessages.TimeOnlyValidator_ValidationError_Formats);
 }
+// b76217

@@ -11,3 +11,4 @@
 
 // 配置资源默认区域性
 [assembly: NeutralResourcesLanguage("en-US")]
+// 156d5e

@@ -69,3 +69,4 @@ public partial class DomainValidator : ValidatorBase
     [GeneratedRegex(@"^([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$")]
     private static partial Regex Regex();
 }
+// 4008d9

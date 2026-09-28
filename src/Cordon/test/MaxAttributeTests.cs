@@ -117,3 +117,4 @@ public class MaxAttributeTests
         [Max(10.1)] public double Data2 { get; set; }
     }
 }
+// 87004c

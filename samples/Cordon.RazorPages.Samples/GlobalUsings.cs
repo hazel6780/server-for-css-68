@@ -4,3 +4,4 @@ global using System.ComponentModel.DataAnnotations;
 global using Cordon.RazorPages.Samples.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.RazorPages;
+// 4d4ac0

@@ -52,3 +52,4 @@ public partial class ColorValidator : ValidatorBase
         RegexOptions.IgnoreCase)]
     private static partial Regex StandardRegex();
 }
+// aa5475

@@ -15,3 +15,4 @@ public interface IRuleSetContextProvider
     /// <returns><see cref="string" />[]</returns>
     string?[]? GetCurrentRuleSets();
 }
+// b49013
